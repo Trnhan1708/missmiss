@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Khung lưới 450x450 để vẽ trái tim */
+#ui {
+    position: relative;
+    width: 650px;
+    height: 650px;
+}
+
+/* Lớp chuyển động ngang (trái sang phải) */
+#ui .love_horizontal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: horizontal 10000ms infinite alternate ease-in-out;
+    animation-delay: calc(var(--i) * -300ms);
+}
+
+/* Lớp chuyển động dọc (lên và xuống theo tỷ lệ tạo hình trái tim) */
+#ui .love_vertical {
+    animation: vertical 20000ms infinite linear;
+    animation-delay: calc(var(--i) * -300ms);
+}
+
+/* Định dạng chữ giống hệt video */
+#ui .love_word {
+    color: #ea80b0;
+    font-size: 1.8rem;
+    font-family: monospace, sans-serif;
+    transform: translateY(-9%) rotateZ(-28deg);
+    text-shadow: 0 0 10px #fff, 0 0 20px #ea80b0; 
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+/* --- TOẠ ĐỘ VẼ TRÁI TIM --- */
+@keyframes horizontal {
+    0% { transform: translateX(0px); }
+    100% { transform: translateX(500px); }
+}
+
+@keyframes vertical {
+    0% { transform: translateY(180px); }
+    10% { transform: translateY(45px); }
+    15% { transform: translateY(5px); }
+    18% { transform: translateY(10px); }      /* Đỉnh trái tim bên trái */
+    20% { transform: translateY(4.5px); }
+    22% { transform: translateY(34.6px); }
+    24% { transform: translateY(64.3px); }
+    25% { transform: translateY(100px); }     /* Khe lõm giữa trái tim */
+    26% { transform: translateY(64.3px); }
+    28% { transform: translateY(34.6px); }
+    30% { transform: translateY(5px); }
+    32% { transform: translateY(10px); }      /* Đỉnh trái tim bên phải */
+    35% { transform: translateY(4.5px); }
+    40% { transform: translateY(45px); }
+    50% { transform: translateY(180px); }    /* Cạnh phải */
+    60% { transform: translateY(310px); }
+    68% { transform: translateY(400px); }
+    75% { transform: translateY(500px); }    /* Đuôi nhọn của trái tim */
+    82% { transform: translateY(400px); }
+    90% { transform: translateY(310px); }
+    100% { transform: translateY(180px); }   /* Cạnh trái */
+}
